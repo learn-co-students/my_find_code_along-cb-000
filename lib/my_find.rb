@@ -5,7 +5,11 @@ def my_find(collection)
   i = 0
   while i < collection.length
     # 2. for each item in the collection, yield it to the block
-    yield(collection[i])
+    if yield(collection[i]) # 3. if the block returns true, return the item for the current iteration. Otherwise, continue to next item in array
+      return collection[i]
+    end
     i += 1
   end
 end
+
+# Step 3 can also be written as: `return collection[i] if yield(collection[i])`
