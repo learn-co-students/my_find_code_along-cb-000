@@ -1,5 +1,16 @@
 require 'pry'
 
 def my_find(collection)
-
+  if !(collection.length == 0)
+    i = 0
+    while i < collection.length
+      if (yield(collection[i]))
+        return collection[i]
+      else
+       i += 1
+     end
+    end
+  else
+    false
+  end
 end
